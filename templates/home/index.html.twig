@@ -1,0 +1,562 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %} 
+<style>
+
+.image{
+  background-image: url("{{ asset('build/images/img.ff152d65.png') }}");
+  width: 100%;
+    min-height: 110vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.h2{
+    font-family: 'Oswald', sans-serif;
+}
+
+login100-form-title{
+  color:blue;
+}
+
+div.artiste{
+   float:left;
+	
+}
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+   
+   
+}
+@media (max-width: 576px)
+.wrap-login100 {
+    padding: 100px 15px 33px 15px;
+}
+@media (max-width: 768px)
+.wrap-login100 {
+    padding: 100px 80px 33px 80px;
+}
+@media (max-width: 992px)
+.wrap-login100 {
+    padding: 177px 90px 33px 85px;
+}
+.wrap-login100 {
+    width: 500px;
+    background: lightblue;
+    opacity: 0.8;
+    border-radius: 14px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 10px 33px 20px;
+    position:relative;
+    right:300px;
+}
+.button {
+        padding: 15px 100px;
+        margin: 10px 4px;
+        color: grey;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        position: relative;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid;
+        position-right:2px;
+       
+      }
+      .button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        -webkit-transform: scaleY(0.1);
+        transform: scaleY(0.1);
+        transition: all 0.4s;
+      }
+      .button:hover {
+        color: #b414ba;
+      }
+      .button:hover::before {
+        opacity: 1;
+        background-color: #f7c2f9;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        transition: -webkit-transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity 0.4s;
+        transition: transform 0.6s cubic-bezier(0.08, 0.35, 0.13, 1.02), opacity;
+      }
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+
+/*----counter----*/
+.counter{
+    background-color: #FAF0E6;
+    background-size:cover;
+    background-repeat:no-repeat;
+    height:50vh;
+    width:100%;
+    color:#A9A9A9;
+}
+.counter .grid{
+   grid-template-columns: repeat(3,1fr);
+   text-align: center;
+   place-items: center;
+   padding-top: 60px;
+}
+.counter h1{
+    font-size: 50px;
+}
+.counter hr{
+    width: 50%;
+    margin 10px auto;
+    background: white;
+    height:2px;
+    border:none;
+}
+/*----counter----*/
+.carte{
+ 
+  z-index: 3;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    border-width: 0px;
+    margin:0px;
+    left:   300px;
+    top: 0px;
+    touch-action: pan-x pan-y;
+    
+
+  
+}
+
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  
+}
+
+input[type=submit] {
+  background-color: lightsteelblue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+  
+}
+
+
+div.maps{
+   width:40%;
+    float:left;
+  
+}
+
+
+div.contact{
+
+float:left;
+width:50%;
+
+height: 500px;  
+ 
+
+
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ 
+
+}
+@keyframes glissement {
+    from {
+      margin-left: 40%;
+      width: 300%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+    background-color:#9FC0B3;
+}
+h3{
+  padding:20px;
+  font-family:Fraktur;
+  color:white;
+  letter-spacing : 3px;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-name: glissement;
+  animation-iteration-count: infinite;
+  text-decoration: underline double green;
+  
+}
+ * {
+  box-sizing: border-box;
+}
+label{
+  color:white;
+  font-family: cursive;
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid white;
+  float: left;
+  width: 250px;
+  
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+  
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+  color:white;
+  font-family:Bodoni MT;
+
+}
+
+*, *:after, *:before {
+  padding:0;
+  margin:0;
+  font-family:Arial;
+}
+div.po{
+    background-color:rgb(47,79,79) ;
+    opacity: 0,95;
+    text-align:center;
+   
+}
+
+h1{
+  color:white;
+ text-align:center;
+ font-family:Bodoni MT;
+ letter-spacing:2px;
+ text-decoration-line: underline;
+ animation-duration: 3s;
+  animation-delay: 2s;
+  animation-name: glissement;
+  animation-iteration-count: infinite;
+}
+h2{
+  text-align:center;
+ font-family:Bodoni MT;
+  color:white;
+  text-decoration-line: underline;
+   animation-duration: 3s;
+  animation-delay: 2s;
+  animation-name: glissement;
+  animation-iteration-count: infinite;
+}
+div.dou{
+  display:flex;
+  justify-content: center;
+}
+.customer-review {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.review-author {
+  font-weight: bold;
+}
+
+.review-rating {
+  margin-top: 10px;
+}
+
+.rating-value {
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+
+
+</style>
+{% endblock %}
+
+
+{% block body %}
+<div  class="image">
+<div class="wrap-login100">
+<form method="post" class="login100-form validate-form">
+<h2>
+Reservation
+</h2>
+<div class="text-center p-t-136">
+<label for="inputPassword">Nombre de Chambres</label>
+    <input type="numeric" name="nb"  required>
+ 
+<select name="room" class="form-control tm-select" id="room">
+                                     <option value="">Room</option>
+                                      {% for type_chambre in type_chambres %}
+                           <option value="{{ type_chambre.id }}">{{ type_chambre.libelle }}</option>
+
+                          {% endfor %}
+                                  
+</select>
+
+</div>
+
+<input class='button' value='Reserver' type="submit" >
+</div>
+
+
+</form>
+</div>
+</div>
+</div>
+
+<!----- artiste galerie  ---->
+
+<div class="po">
+<br>
+<h1> Derniéres tournées</h1>
+<div class="dou">
+
+ <br>
+<div class="gallery">
+  <a target="_blank" href="Folklores.jpg">
+    <img src="{{asset('build/images/foklores.0bbbaca1.jpg')}}" alt="foklores" style=width="200 height="500">
+  </a>
+  <div class="desc">BRENSKY VALASEK
+  <br>
+  <br>
+  LE 02 JUIN 2022
+  </div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="DANCEPERADOS OF IRELAND">
+    <img src="{{asset('build/images/ireland.jpg')}}" alt="ireland" style=width="800" height="600">
+  </a>
+  <div class="desc">DANCEPERADOS OF IRELAND
+  <br>
+  <br>
+  LE 02 FEV 2023
+  </div>
+</div>
+<div class="gallery">
+  <a target="_blank" href="DANCEPERADOS OF IRELAND">
+    <img src="{{asset('build/images/R.png')}}" alt="R" style=width="800" height="600">
+  </a>
+  <div class="desc">COMPANIA FOLKLORICA SINALOENSE
+  <br>
+  <br>
+  LE 13 JANV 2023
+  </div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_lights.jpg">
+    <img src="{{asset('build/images/mada.jpg')}}" alt="mada" style=width="800" height="500">
+  </a>
+  <div class="desc">BENJA GASY MADAGASCAR
+  <br>
+  <br>
+  <br>
+  LE 23 DEC 2022
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!----- artiste galerie  ---->
+
+
+<!-- contact section-->
+<div class="row">
+
+ 
+  
+   <div class="column">
+    <!-- to edit google map goto https://www.embed-map.com type your location, generate html code and copy the html  -->
+               <!-- <div style="max-width:100%;overflow:hidden;color:red;width:500px;height:500px;"> -->
+                      <!--  <div id="embedmap-canvas" style="height:100%; width:100%;max-width:100%;"> -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2635.920025634838!2d-2.027908485118987!3d48.6496451233371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480e811031e3a8df%3A0x94bf5e3e55b19e69!2sFestival%20de%20Musique%20Sacr%C3%A9e%20de%20Saint-Malo!5e0!3m2!1sfr!2sfr!4v1670324535709!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                             
+   </div>
+   
+   <div class="column">
+  <h3>Contact Form</h3>
+  <form method="post">
+  <label for="fname">Email</label>
+  <input type="email" id="email" name"email" placeholder="email@exemple.com">
+ <br>
+  <label for="fname">Nom</label>
+  <input type="text" id="fname" name="Nom" placeholder="Votre nom..">
+  <label for="lname">Prénom</label>
+  <input type="text" id="lname" name="prenom" placeholder="Votre prénom..">
+  <label for="country">Pays</label>
+  <select id="country" name="Pays">
+      <option value="australia">Australia</option>
+      <option value="australia">France</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+    <label for="subject">Sujet</label>
+    <textarea id="subject" name="sujet" placeholder="Rédiger.." ></textarea>
+    <input type="submit" value="Submit">
+  </form>
+  
+</div>
+
+ 
+    </div>
+    
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

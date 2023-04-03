@@ -1,0 +1,268 @@
+
+
+
+{% block stylesheets %}
+<style>
+.container {
+ margin: 0 auto;
+max-width: 1000px;
+
+}
+.navigation {
+  width: 100%;
+  height: 80px;
+  padding: 10px 0;
+  background-image: linear-gradient(-90deg, #fff, #eee);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  webkittransition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+  
+  
+}
+.logo {
+  color:black;
+  width: 20%;
+  float: left;
+  line-height: 50px;
+ font-family: cursive;
+ 
+}
+.navigation-links {
+  text-align: right;
+  padding: 0;
+}
+.navigation-links li {
+  color: black;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  -webkit-transition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+}
+
+.navigation-links li.active {
+  
+  background-color: rgba(	83, 173, 203, .3);
+
+}
+
+.navigation-links a {
+  
+  text-decoration: none;
+
+}
+
+.navigation-links li:hover {
+  background-color: rgba(	83, 173, 203, 1);
+  color: #fff;
+  cursor: pointer;
+ 
+  
+}
+.icon {
+  display: none;
+  padding: 20px;
+  border-radius: 50%;
+  
+ 
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .logo {
+    width: 100%;
+    padding: 0 20px;
+   
+  }
+  
+  .navigation-links li {display: none;
+   text-decoration: none;
+  }
+  .navigation-links a.icon {
+    float: right;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    text-decoration: none;
+  }
+  .navigation.responsive .navigation-links a.icon {
+    background-color: rgba(	83, 173, 203, 1);
+    color: #fff;
+    cursor: pointer;
+   
+    
+  }
+  
+  .navigation.responsive {
+    position: relative;
+    height: 200px;
+  }
+  .navigation.responsive .navigation-links li {
+    float: none;
+    display: block;
+    text-align: left;
+      -webkit-transition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+  }
+
+}
+body {
+  margin: auto;
+  overflow: auto;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  background: radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0,
+    radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%,  
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #B1C2B3 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #F5FCD0 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0;
+  background-size: 8rem 8rem;
+  background-color: #F5FCD0;
+  }
+
+
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  align-items: center;
+  margin-left:65px;
+  color:#2F4F4F;
+ }
+.grid > article {
+  border: 3px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+   background-color:	#C0C0C0;
+  
+}
+.grid > article img {
+  height: 60%;
+  width: 100%; 
+  padding:0px;
+}
+.text {
+  padding: 0 20px 20px;
+
+}
+.text > button {
+  background: lavenderblush;
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  }
+
+
+  @keyframes glissement {
+    from {
+      margin-left: 80%;
+      width: 300%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+h1{
+ 
+ text-align:center;
+ animation-duration: 4s;
+  animation-delay: 2s;
+  animation-name: glissement;
+  animation-iteration-count: infinite;
+  text-shadow:0 0 2px #A0C3D2,0 0 30px  #A0C3D2,0px 0px 5px  #A0C3D2, 0 0 150px  #A0C3D2;color:#2F4F4F;
+background-color:opacity;
+ 
+}
+
+
+
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+<nav class="navigation" id="navigation">
+  <div class="container">
+    <div class="logo">Festival</div>
+    <ul class="navigation-links">
+      <li>
+        <a href="{{ path('app_home')   }}">Home</a>
+      </li>
+      
+      <li>
+        <a href="{{ path('app_etablissement_index')   }}">Etablissements</a>
+      </li>
+      <li class="active"><a href="login">Connexion</a></li>
+      <li>
+      <a href="{{ path('app_offre_index')   }}">Offre</a>
+      </li>
+      <li>
+        <a href="{{ path('app_groupes_index')   }}">Groupes</a>
+      </li>
+      <li>
+        <a href="{{ path('app_type_chambre_index')   }}">Types de Chambres</a>
+      </li>
+      <li>
+      <a href="javascript:void(0);" class="icon" onclick="responsiveMenu()">
+        <i class="fa fa-bars"></i>
+      </a> </li>
+    </ul>
+  </div>
+</nav>
+ <h1>Rooms</h1>
+ <br>
+ <body>
+    <main class="grid">     
+ {% for type_chambre in type_chambres %}
+
+  <article>
+    <img src="{{ asset('uploads/image/'~type_chambre.imageFilename) }}"
+    <div class="text">
+      <h3><b>{{ type_chambre.libelle }}</b></h3>
+      <p>La chambre familiale standard a une chambrette apart avec deux lits superposés pour 2 enfants.
+</p>
+
+{% if type_chambre.statut ==  false %}
+<h3><b> Indisponible</b></h3>
+ 
+{% else %}
+<h3><b>Disponible</b></h3>
+ 
+{% endif %}
+    <button onclick="window.location.href ="{{ path('app_type_chambre_show', {'id': type_chambre.id}) }}"><a style="text-decoration:none;" href="{{ path('app_type_chambre_show', {'id': type_chambre.id}) }}">Voir le détails</a> </button>
+     <button> <a href="{{ path('app_type_chambre_new') }}"style="color: #8ebf42">Create new </a> </button>
+    <button><a style="text-decoration:none;" href="{{ path('app_type_chambre_edit', {'id': type_chambre.id}) }}"style="color: #8ebf42">edit</a></button>
+   </div>
+  </article>
+  {% endfor %}
+
+
+</main>
+</div>
+</body>
+{% endblock %}

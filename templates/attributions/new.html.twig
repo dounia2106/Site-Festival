@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Attributions{% endblock %}
+
+{% block body %}
+    <h1>Réservation</h1>
+
+    {{ include('attributions/_form.html.twig') }}
+
+    <a href="{{ path('app_attributions_index') }}">back to list</a>
+{% endblock %}

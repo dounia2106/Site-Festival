@@ -1,0 +1,227 @@
+{% block stylesheets %}
+ <style>
+ body {
+  margin: auto;
+  overflow: auto;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  background: radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0,
+    radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%,  
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #B1C2B3 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #F5FCD0 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0;
+  background-size: 8rem 8rem;
+  background-color: #F5FCD0;
+  }
+ .container {
+ margin: 0 auto;
+max-width: 1000px;
+
+}
+.navigation {
+  width: 100%;
+  height: 80px;
+  padding: 10px 0;
+  background-image: linear-gradient(-90deg, #fff, #eee);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  webkittransition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+ 
+  
+}
+.logo {
+  color:black;
+  width: 20%;
+  float: left;
+  line-height: 50px;
+ font-family: cursive;
+ 
+}
+.navigation-links {
+  text-align: right;
+  padding: 0;
+}
+.navigation-links li {
+  color: black;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  -webkit-transition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+   
+}
+
+.navigation-links li.active {
+  
+  background-color: rgba(	83, 173, 203, .3);
+
+}
+
+.navigation-links a {
+  
+  text-decoration: none;
+
+}
+
+.navigation-links li:hover {
+  background-color: rgba(	83, 173, 203, 1);
+  color: #fff;
+  cursor: pointer;
+ 
+  
+}
+.icon {
+  display: none;
+  padding: 20px;
+  border-radius: 50%;
+  
+ 
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .logo {
+    width: 100%;
+    padding: 0 20px;
+   
+  }
+  
+  .navigation-links li {display: none;
+   text-decoration: none;
+  }
+  .navigation-links a.icon {
+    float: right;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    text-decoration: none;
+  }
+  .navigation.responsive .navigation-links a.icon {
+    background-color: rgba(	83, 173, 203, 1);
+    color: #fff;
+    cursor: pointer;
+   
+    
+  }
+  
+  .navigation.responsive {
+    position: relative;
+    height: 200px;
+  }
+  .navigation.responsive .navigation-links li {
+    float: none;
+    display: block;
+    text-align: left;
+      -webkit-transition: all .8s; /* Safari prior 6.1 */
+  transition: all .8s;
+  }
+
+}
+
+
+ </style>
+  {% endblock %}
+  
+
+{% block body %}
+<body>
+     <nav class="navigation" id="navigation">
+  <div class="container">
+    <div class="logo">Festival</div>
+    <ul class="navigation-links">
+      <li>
+        <a href="{{ path('app_home')   }}">Home</a>
+      </li>
+      
+      <li>
+        <a href="{{ path('app_etablissement_index')   }}">Etablissements</a>
+      </li>
+      
+       <li class="active"><a href="{{ path('app_login')   }}">Connexion</a></li>
+    
+     <li>
+      <a href="{{ path('app_offre_index')   }}">Offre</a>
+      </li>
+      <li>
+        <a href="{{ path('app_groupes_index')   }}">Groupes</a>
+      </li>
+      <li>
+        <a href="{{ path('app_type_chambre_index')   }}">Types de Chambres</a>
+      </li>
+      <li>
+        <a href="{{ path('app_attributions_index')   }}">Attributions</a>
+      </li>
+
+      {% if app.user %}
+      <li>
+        <a href="{{ path('app_logout')   }}">Se déconnecter</a>
+      </li>
+  
+    {% endif %}
+      <li>
+      <a href="javascript:void(0);" class="icon" onclick="responsiveMenu()">
+        <i class="fa fa-bars"></i>
+      </a> </li>
+    </ul>
+  </div>
+</nav>
+</body>
+{% block title %}Log in!{% endblock %}
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+   
+
+    <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter!</h1>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+    <button class="btn btn-lg btn-primary" type="submit">
+    <a href="{{ path('app_register')}}">
+        Register
+    </button>
+</form>
+{% endblock %}
