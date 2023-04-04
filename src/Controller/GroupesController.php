@@ -22,6 +22,7 @@ class GroupesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_groupes_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function new(Request $request, GroupesRepository $groupesRepository): Response
     {
         $groupe = new Groupes();
@@ -41,6 +42,7 @@ class GroupesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_groupes_show', methods: ['GET'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function show(Groupes $groupe): Response
     {
         return $this->render('groupes/show.html.twig', [
@@ -49,6 +51,7 @@ class GroupesController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_groupes_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Groupes $groupe, GroupesRepository $groupesRepository): Response
     {
         $form = $this->createForm(GroupesType::class, $groupe);

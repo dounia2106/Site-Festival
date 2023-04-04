@@ -52,7 +52,7 @@ class EtablissementController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_etablissement_edit', methods: ['GET', 'POST'])]
-    #[IsGranted("ROLE_USER")]
+    #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Etablissement $etablissement, EtablissementRepository $etablissementRepository): Response
     {
         $form = $this->createForm(EtablissementType::class, $etablissement);
