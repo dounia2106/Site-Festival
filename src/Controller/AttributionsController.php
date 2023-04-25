@@ -25,6 +25,15 @@ class AttributionsController extends AbstractController
         ]);
     }
 
+
+    #[Route('/EtabGroupe', name: 'app_attributions_ETBGroupe', methods: ['GET'])]
+    public function etapGroup(AttributionsRepository $attributionsRepository): Response
+    {    dump($attributionsRepository->findByETAbGroup());
+        return $this->render('attributions/etapGroup.html.twig', [
+            'etabGroups' => $attributionsRepository->findByETAbGroup(),
+        ]);
+    }
+
     #[Route('/{id}/new', name: 'app_attributions_new', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_ADMIN")]
     public function new(Request $request, AttributionsRepository $attributionsRepository , Offre $offre, OffreRepository $offreRepository  ): Response

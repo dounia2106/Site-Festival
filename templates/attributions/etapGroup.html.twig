@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+ <style>
+ body {
+  margin: auto;
+  overflow: auto;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  background: radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0,
+    radial-gradient(4rem,
+    rgba(255,255,255,0) 80%, 
+    #778691 80%, #778691 99%,  
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #B1C2B3 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 4em 4em,
+    radial-gradient(4.7rem,
+    rgba(255,255,255,0) 50%, 
+    #B1C2B3 50%,
+    #F5FCD0 75%, #B1C2B3 99%, 
+    rgba(255,255,255, 0) 
+    ) 0 0;
+  background-size: 8rem 8rem;
+  background-color: #F5FCD0;
+  hidden: overflow;
+  }
+  @keyframes glissement {
+    from {
+      margin-left: 80%;
+      width: 300%;
+    }
+
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+h1{
+   text-shadow:0 0 2px #A0C3D2,0 0 30px  #A0C3D2,0px 0px 5px  #A0C3D2, 0 0 50px  #A0C3D2;color:#2F4F4F;
+background-color:opacity;
+ font-family: 'Oswald', sans-serif;
+ font-style: italic;
+text-decoration: underline;
+ text-align:center;
+ animation-duration: 4s;
+  animation-delay: 2s;
+  animation-name: glissement;
+  animation-iteration-count: infinite;
+}
+.table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden; 
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  top: 200px;
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.6);
+	color:black;
+}
+
+th {
+	text-align: left;
+    text-decoration: underline;
+}
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
+}
+.table {
+	position:relative;
+    margin-top: 200px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  line-height: 1em;
+  
+</style>
+  {% endblock %}
+
+
+
+{% block title %}Attributions index{% endblock %}
+
+{% block body %}
+    <h1>Attributions index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+            
+                <th>Nom</th>
+                <th>Nb Groupe</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for val in etabGroups %}
+            <tr>
+                <td>{{ val.nom }}</td>
+                <td>{{ val.nBgroupe }}</td>
+              
+           
+                <td>
+                {% if is_granted('ROLE_ADMIN') == true %}
+
+                 <button>  <a href="{{ path('app_attributions_show', {'id': attribution.id}) }}">show</a> </button> 
+                 <button>    <a href="{{ path('app_attributions_edit', {'id': attribution.id}) }}">edit</a> </button> 
+                {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+ 
+{% endblock %}

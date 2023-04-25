@@ -63,4 +63,19 @@ class AttributionsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+public function findByETAbGroup(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT e.nom, COUNT(*) AS nBgroupe FROM attributions a, groupes  g, offre  o, etablissement e WHERE a.id = g.id and o.id = a.id and o.id= e.id GROUP BY e.nom
+            ';
+        $stmt = $conn->prepare($sql);
+        $resultSet = $stmt->executeQuery();
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
 }
