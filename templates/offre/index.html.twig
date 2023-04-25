@@ -1,3 +1,5 @@
+{% extends 'base.html.twig' %}
+
 {% block stylesheets %}
  <style>
 
@@ -262,48 +264,7 @@ button.Create::after {
 
 
 {% block body %}
-<body>
-   <nav class="navigation" id="navigation">
-  <div class="container">
-    <div class="logo">Festival</div>
-    <ul class="navigation-links">
-      <li>
-        <a href="{{ path('app_home')   }}">Home</a>
-      </li>
-      
-      <li>
-        <a href="{{ path('app_etablissement_index')   }}">Etablissements</a>
-      </li>
-      
-       <li class="active"><a href="{{ path('app_login')   }}">Connexion</a></li>
-    
-     <li>
-      <a href="{{ path('app_offre_index')   }}">Offre</a>
-      </li>
-      <li>
-        <a href="{{ path('app_groupes_index')   }}">Groupes</a>
-      </li>
-      <li>
-        <a href="{{ path('app_type_chambre_index')   }}">Types de Chambres</a>
-      </li>
-      <li>
-        <a href="{{ path('app_attributions_index')   }}">Attributions</a>
-      </li>
 
-      {% if app.user %}
-      <li>
-        <a href="{{ path('app_logout')   }}">Se déconnecter</a>
-      </li>
-  
-    {% endif %}
-      <li>
-      <a href="javascript:void(0);" class="icon" onclick="responsiveMenu()">
-        <i class="fa fa-bars"></i>
-      </a> </li>
-    </ul>
-  </div>
-</nav>
-</body>
     <h1>Offre index</h1>
 
     <table class="table">

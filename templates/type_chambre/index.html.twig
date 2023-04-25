@@ -1,4 +1,4 @@
-
+{% extends 'base.html.twig' %}
 
 
 {% block stylesheets %}
@@ -206,37 +206,10 @@ background-color:opacity;
 
 
 {% block body %}
-<nav class="navigation" id="navigation">
-  <div class="container">
-    <div class="logo">Festival</div>
-    <ul class="navigation-links">
-      <li>
-        <a href="{{ path('app_home')   }}">Home</a>
-      </li>
-      
-      <li>
-        <a href="{{ path('app_etablissement_index')   }}">Etablissements</a>
-      </li>
-      <li class="active"><a href="login">Connexion</a></li>
-      <li>
-      <a href="{{ path('app_offre_index')   }}">Offre</a>
-      </li>
-      <li>
-        <a href="{{ path('app_groupes_index')   }}">Groupes</a>
-      </li>
-      <li>
-        <a href="{{ path('app_type_chambre_index')   }}">Types de Chambres</a>
-      </li>
-      <li>
-      <a href="javascript:void(0);" class="icon" onclick="responsiveMenu()">
-        <i class="fa fa-bars"></i>
-      </a> </li>
-    </ul>
-  </div>
-</nav>
+
  <h1>Rooms</h1>
  <br>
- <body>
+
     <main class="grid">     
  {% for type_chambre in type_chambres %}
 
@@ -244,7 +217,7 @@ background-color:opacity;
     <img src="{{ asset('uploads/image/'~type_chambre.imageFilename) }}"
     <div class="text">
       <h3><b>{{ type_chambre.libelle }}</b></h3>
-      <p>La chambre familiale standard a une chambrette apart avec deux lits superposés pour 2 enfants.
+      <p>{{ type_chambre.description }}
 </p>
 
 {% if type_chambre.statut ==  false %}
@@ -264,5 +237,5 @@ background-color:opacity;
 
 </main>
 </div>
-</body>
+
 {% endblock %}
