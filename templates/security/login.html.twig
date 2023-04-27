@@ -230,7 +230,6 @@ input[type="submit"] {
   </div>
 </nav>
 </body>
-{% block title %}Log in!{% endblock %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
