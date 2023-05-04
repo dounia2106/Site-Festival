@@ -124,6 +124,9 @@ thead {
 
                  <button>  <a href="{{ path('app_attributions_show', {'id': attribution.id}) }}">show</a> </button> 
                  <button>    <a href="{{ path('app_attributions_edit', {'id': attribution.id}) }}">edit</a> </button> 
+                  <button class="Create">
+              <a href="{{ path('app_attributions_new', {'id': attribution.id}) }}">Create new</a> 
+              </button>
                 {% endif %}
                 </td>
             </tr>
