@@ -28,12 +28,12 @@ class Attributions
         return $this->id;
     }
 
-    public function getNombreschambres(): ?string
+    public function getNombreschambres(): ?int
     {
         return $this->nombreschambres;
     }
 
-    public function setNombreschambres(string $nombreschambres): self
+    public function setNombreschambres(int $nombreschambres): self
     {
         $this->nombreschambres = $nombreschambres;
 
