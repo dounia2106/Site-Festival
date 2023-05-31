@@ -223,4 +223,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+public function ___toString() :string
+{
+    return $this->nom ;
+}
+
 }

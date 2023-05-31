@@ -67,6 +67,8 @@ class AttributionsController extends AbstractController
         ]);
     }
 
+
+
     #[Route('/{id}/edit', name: 'app_attributions_edit', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Attributions $attribution, AttributionsRepository $attributionsRepository): Response

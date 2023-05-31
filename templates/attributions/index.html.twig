@@ -88,7 +88,7 @@ thead {
 	left: 50%;
 	transform: translate(-50%, -50%);
   line-height: 1em;
-  
+  }
 </style>
   {% endblock %}
 
@@ -124,6 +124,7 @@ thead {
 
                  <button>  <a href="{{ path('app_attributions_show', {'id': attribution.id}) }}">show</a> </button> 
                  <button>    <a href="{{ path('app_attributions_edit', {'id': attribution.id}) }}">edit</a> </button> 
+              
                 {% endif %}
                 </td>
             </tr>

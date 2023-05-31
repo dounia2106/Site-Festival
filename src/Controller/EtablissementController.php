@@ -69,7 +69,15 @@ class EtablissementController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    /*afficher les offres pour un etablissement
+    #[Route('/{id}/offres', name: 'app_offre', methods: ['GET'])]
+    public function getOffres(Etablissement $etablissement): Response
+    {    dump( $etablissement->getOffres());
+        return $this->render('offre/index.html.twig', [
+            'offres' => $etablissement->getOffres(),
+        ]);
+    }*/
+    //
     #[Route('/{id}', name: 'app_etablissement_delete', methods: ['POST'])]
     public function delete(Request $request, Etablissement $etablissement, EtablissementRepository $etablissementRepository): Response
     {
