@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/groupes')]
 class GroupesController extends AbstractController
@@ -70,6 +71,7 @@ class GroupesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_groupes_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function delete(Request $request, Groupes $groupe, GroupesRepository $groupesRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$groupe->getId(), $request->request->get('_token'))) {
@@ -78,4 +80,5 @@ class GroupesController extends AbstractController
 
         return $this->redirectToRoute('app_groupes_index', [], Response::HTTP_SEE_OTHER);
     }
+    
 }

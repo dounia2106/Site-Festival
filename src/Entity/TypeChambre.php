@@ -129,6 +129,6 @@ class TypeChambre
         return $this;
     }
 
-   
+    
    
 }
