@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Etablissement;
+use App\Entity\Etabtypechambres;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Etablissement>
+ * @extends ServiceEntityRepository<Etabtypedechambres>
  *
- * @method Etablissement|null find($id, $lockMode = null, $lockVersion = null)
- * @method Etablissement|null findOneBy(array $criteria, array $orderBy = null)
- * @method Etablissement[]    findAll()
- * @method Etablissement[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Etabtypedechambres|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Etabtypedechambres|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Etabtypedechambres[]    findAll()
+ * @method Etabtypedechambres[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EtablissementRepository extends ServiceEntityRepository
+class EtabtypechambresRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Etablissement::class);
+        parent::__construct($registry, Etabtypechambres::class);
     }
 
-    public function save(Etablissement $entity, bool $flush = false): void
+    public function save(Etabtypechambres $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class EtablissementRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Etablissement $entity, bool $flush = false): void
+    public function remove(Etabtypechambres $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -38,17 +38,9 @@ class EtablissementRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function findByNom(string $nom): array
-   {
-       return $this->createQueryBuilder('e')
-           ->andWhere('UPPER(e.nom) LIKE :nom')
-           ->setParameter('nom', '%' . strtoupper($nom) . '%')
-           ->getQuery()
-           ->getResult();
-   }
 
 //    /**
-//     * @return Etablissement[] Returns an array of Etablissement objects
+//     * @return Etabtypedechambres[] Returns an array of Etabtypedechambres objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -62,7 +54,7 @@ class EtablissementRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Etablissement
+//    public function findOneBySomeField($value): ?Etabtypedechambres
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')

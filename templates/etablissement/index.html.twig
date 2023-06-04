@@ -242,6 +242,12 @@ max-width: 1000px;
 {% block body %}
 
     <h1>Etablissement index</h1>
+    <form method="post" action="{{ path('app_etablissement_filter_by_name') }}">
+    <div class="input-group mb-3">
+        <input type="text" name="nom" class="form-control" placeholder="Nom de l'établissement" aria-label="Nom de l'établissement" aria-describedby="button-filter" />
+        <button class="btn btn-outline-primary" type="submit" id="button-filter">Filtrer</button>
+    </div>
+</form>
     <table class="table">
         <thead>
             <tr>

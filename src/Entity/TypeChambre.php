@@ -32,10 +32,14 @@ class TypeChambre
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\OneToMany(mappedBy: 'typechambre', targetEntity: Etabtypechambres::class)]
+    private Collection $etabtypechambres;
+
     public function __construct()
     {
       
         $this->offres = new ArrayCollection();
+        $this->etabtypechambres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,6 +129,36 @@ class TypeChambre
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Etabtypechambres>
+     */
+    public function getEtabtypechambres(): Collection
+    {
+        return $this->etabtypechambres;
+    }
+
+    public function addEtabtypechambre(Etabtypechambres $etabtypechambre): self
+    {
+        if (!$this->etabtypechambres->contains($etabtypechambre)) {
+            $this->etabtypechambres->add($etabtypechambre);
+            $etabtypechambre->setTypechambre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtabtypechambre(Etabtypechambres $etabtypechambre): self
+    {
+        if ($this->etabtypechambres->removeElement($etabtypechambre)) {
+            // set the owning side to null (unless already changed)
+            if ($etabtypechambre->getTypechambre() === $this) {
+                $etabtypechambre->setTypechambre(null);
+            }
+        }
 
         return $this;
     }

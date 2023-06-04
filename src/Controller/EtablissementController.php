@@ -50,7 +50,19 @@ class EtablissementController extends AbstractController
             'etablissement' => $etablissement,
         ]);
     }
+ 
+    #[Route('/filter-by-name', name: 'app_etablissement_filter_by_name', methods: ['POST'])]
+    public function filterByName(Request $request, EtablissementRepository $etablissementRepository)
+    {
+        $nom = $request->request->get('nom');
 
+        $etablissements = $etablissementRepository->findByNom($nom);
+
+        return $this->render('etablissement/index.html.twig', [
+            'etablissements' => $etablissements,
+        ]);
+    }
+    
     #[Route('/{id}/edit', name: 'app_etablissement_edit', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Etablissement $etablissement, EtablissementRepository $etablissementRepository): Response
@@ -87,4 +99,6 @@ class EtablissementController extends AbstractController
 
         return $this->redirectToRoute('app_etablissement_index', [], Response::HTTP_SEE_OTHER);
     }
+
+ 
 }

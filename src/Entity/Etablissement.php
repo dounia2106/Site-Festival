@@ -47,10 +47,14 @@ class Etablissement
     #[ORM\ManyToOne(inversedBy: 'etablissements')]
     private ?User $user = null;
 
+    #[ORM\OneToMany(mappedBy: 'etablissement', targetEntity: Etabtypechambres::class)]
+    private Collection $etabtypechambres;
+
     public function __construct()
     {
        
         $this->offres = new ArrayCollection();
+        $this->etabtypechambres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,4 +210,36 @@ class Etablissement
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Etabtypechambres>
+     */
+    public function getEtabtypechambres(): Collection
+    {
+        return $this->etabtypechambres;
+    }
+
+    public function addEtabtypechambre(Etabtypechambres $etabtypechambre): self
+    {
+        if (!$this->etabtypechambres->contains($etabtypechambre)) {
+            $this->etabtypechambres->add($etabtypechambre);
+            $etabtypechambre->setEtablissement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtabtypechambre(Etabtypechambres $etabtypechambre): self
+    {
+        if ($this->etabtypechambres->removeElement($etabtypechambre)) {
+            // set the owning side to null (unless already changed)
+            if ($etabtypechambre->getEtablissement() === $this) {
+                $etabtypechambre->setEtablissement(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }

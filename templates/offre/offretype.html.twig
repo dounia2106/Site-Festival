@@ -1,0 +1,28 @@
+{% block body %}
+  
+    <h1>TypeOffres</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>TypeChambre</th>
+                <th>nombreOffres</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type in offretypechambre%}
+            <tr>
+                
+                     <td>{{ type.typeschambres_id}}</td>
+                         <td>{{ type. nombre_offres }}</td>
+                
+                <td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+{% endblock %}

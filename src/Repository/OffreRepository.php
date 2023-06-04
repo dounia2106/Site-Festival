@@ -39,6 +39,18 @@ class OffreRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllNombreoffreGroupe():array {
+        $conn =$this->getEntityManager()->getConnection();
+        $sql='SELECT typeschambres_id, COUNT(*) AS nombre_offres
+        FROM offre
+        GROUP BY typeschambres_id;
+        ';
+        $stmt=$conn->prepare($sql);
+        $resultSet =$stmt->executeQuery([]);
+    
+        return $resultSet->fetchAllAssociative();
+     }
+
  /*
  /** 
    * @return Offre[] Returns an array of Groupes objects
@@ -79,6 +91,8 @@ public function findByNbC(): array
         return $query->getResult();
     }
 
+
+   
 //    public function findOneBySomeField($value): ?Offre
 //    {
 //        return $this->createQueryBuilder('o')

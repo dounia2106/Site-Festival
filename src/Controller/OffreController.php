@@ -19,9 +19,20 @@ class OffreController extends AbstractController
 
     public function index(OffreRepository $offreRepository): Response
     {
-         $nombrechambre = 0 ;
+     $offres = $offreRepository->findAll() ;  $nombrechambre = 0 ;
+     $nombreoffres = count($offres);
+     dump ($nombreoffres);
         return $this->render('offre/index.html.twig', [
-            'offres' => $offreRepository->findAll(),
+            'offres' => $offres,
+            'nombreoffres'=>$nombreoffres,
+        ]);
+    }
+
+    #[Route('/offretype', name: 'app_typeoffresgroupes ', methods: ['GET'])]
+    public function findAllNombreoffreGroupe(OffreRepository $typeChambreRepository): Response
+    {
+        return $this->render('offre/offretype.html.twig', [
+            'offretypechambre' => $typeChambreRepository->findAllNombreoffreGroupe(),
         ]);
     }
 
