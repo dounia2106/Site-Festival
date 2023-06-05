@@ -80,7 +80,7 @@ public function findByNbC(): array
 
         $query = $entityManager->createQuery(
             'SELECT o.id, e.nom, e.ville
-            , t.libelle, o.nombreChambres FROM App\Entity\Offre o, App\Entity\Etablissement e,App\Entity\TypeChambre t 
+            , t.libelle, o.nombreChambres FROM App\Entity\Offre o, App\Entity\Etablissement e,App\Entity\TypeChambre t
             WHERE o.etablissement=e.id and 
             o.typeschambres= t.id and t.id = :val and o.nombreChambres >:val1'
         )->setParameter('val', $id)

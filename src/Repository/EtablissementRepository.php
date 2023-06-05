@@ -38,6 +38,7 @@ class EtablissementRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+  
     public function findByNom(string $nom): array
    {
        return $this->createQueryBuilder('e')
@@ -46,6 +47,7 @@ class EtablissementRepository extends ServiceEntityRepository
            ->getQuery()
            ->getResult();
    }
+  
 
 //    /**
 //     * @return Etablissement[] Returns an array of Etablissement objects

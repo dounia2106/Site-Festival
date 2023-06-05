@@ -54,7 +54,6 @@ class TypeChambreRepository extends ServiceEntityRepository
 //        ;
 //    }
  
-
    public function findByDispo($value): ?TypeChambre
        {
         $dipo = true ;
